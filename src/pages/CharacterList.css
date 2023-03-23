@@ -1,0 +1,4 @@
+.CharactersList {
+    display: flex;
+    flex-wrap: wrap;
+}
