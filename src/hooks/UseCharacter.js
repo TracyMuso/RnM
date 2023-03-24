@@ -1,15 +1,5 @@
 import { useQuery, gql } from "@apollo/client";
 
-const GET_CHARACTERS = gql`
-query {
-    characters {
-        results {
-            id
-            name
-            image
-        }
-    }
-}`;
 
 const GET_CHARACTER = gql`
 query GetCharacter($id: ID!) {
@@ -24,8 +14,12 @@ query GetCharacter($id: ID!) {
     }
 }`;
 
-function UseCharacters() {
-    const { error, data, loading } = useQuery(GET_CHARACTERS)
+function UseCharacter(id) {
+    const { error, data, loading } = useQuery(GET_CHARACTER, {
+        variables: {
+            id
+        }
+    });
 
     return {
         error,
@@ -35,4 +29,4 @@ function UseCharacters() {
   }
 
   
-  export default UseCharacters;
+  export default UseCharacter;
